@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Feliz dia dos namorados</title>
+<style>
+
+    *{
+        margin: 0;
+    }
+
+    body{
+        background-color: rgb(29, 29, 29);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box-play{
+        background: #00ff00;
+        background: linear-gradient(180deg,rgba(0, 255, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
+        width: 20.83vw;
+        height: 65vh;
+        margin-top: 100px;
+        box-shadow: 0px 10px 50px black;
+        border-radius: 20px;
+    }
+
+    .img-box{
+        height: 45vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carrossel {
+        width: 14vw;
+        height: 26vh;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+    }
+
+    .carrossel img {
+        display: none;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .carrossel img.visivel {
+        display: block;
+    }
+
+    .controle-play{
+        height: 20vh;
+    }
+
+    
+    .pause-play{
+        background-image: url(img/play.png);
+        background-color: rgb(255, 255, 255);
+        background-size: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 100%;
+        border: none;
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+    }
+
+    .pause-play.pausando {
+    background-image: url("img/pause.png"); /* muda para ícone de pause */
+}
+
+    .controle{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+
+    .btn{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 20px;
+    }
+
+    .pass-button{
+        height: 50px;
+        width: 50px;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        cursor: pointer;
+    }
+
+    .controle img{
+        height: 70%;
+        width: 70%;
+    }
+
+    .barra-container {
+        position: relative;
+        width: 300px;
+        height: 6px;
+        background: #ccc;
+        margin: 20px 0;
+        border-radius: 3px;
+    }
+
+    .progresso {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: white;
+        border-radius: 3px;
+    }
+
+    .bolinha {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 14px;
+        height: 14px;
+        background: #ccc;
+        border-radius: 50%;
+        pointer-events: none;
+    }
+</style>
+
+</head>
+<body>
+
+    <section class="box-play">
+        <div class="img-box">
+            <div class="carrossel">
+                <img src="img/foto1.jpg" class="visivel" alt="Imagem 1">
+                <img src="img/foto2.jpg" alt="Imagem 2">
+                <img src="img/foto3.jpg" alt="Imagem 3">
+                <img src="img/foto4.jpg" alt="Imagem 4">
+                <img src="img/foto5.jpg" alt="Imagem 5">
+                <img src="img/foto6.jpg" alt="Imagem 6">
+                <img src="img/foto7.jpg" alt="Imagem 7">
+                <img src="img/foto8.jpg" alt="Imagem 8">
+                <img src="img/foto9.jpg" alt="Imagem 9">
+            </div>
+        </div>
+
+        <div class="controle-play">
+            <div class="controle">
+                <audio id="musica" src="img/New West - Those Eyes (slowed + reverb).mp3"></audio>
+                
+                <div class="barra-container" id="barraContainer">
+                    <div class="progresso" id="progresso"></div>
+                    <div class="bolinha" id="bolinha"></div>
+                </div>
+
+                <div class="btn">
+                    <button class="pass-button" onclick="voltar()"><img src="img/previous (1).png" alt=""></button>
+                    <button class="pause-play" onclick="toggleMusica()" id="botaoPlay"></button>
+                    <button class="pass-button" onclick="avancar()"><img src="img/next-button (1).png" alt=""></button>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+
+    
+<script>
+    let indiceAtual = 0;
+    const imagens = document.querySelectorAll('.carrossel img');
+    function mostrarImagem(index) {
+        imagens.forEach((img, i) => {
+            img.classList.toggle('visivel', i === index);
+        });
+    }
+
+    function avancar() {
+        indiceAtual = (indiceAtual + 1) % imagens.length;
+        mostrarImagem(indiceAtual);
+    }
+
+    function voltar() {
+        indiceAtual = (indiceAtual - 1 + imagens.length) % imagens.length;
+        mostrarImagem(indiceAtual);
+    }
+
+</script>
+
+<script>
+    const musica = document.getElementById('musica');
+    const progresso = document.getElementById("progresso");
+    const bolinha = document.getElementById("bolinha");
+    const barraContainer = document.getElementById("barraContainer");
+    const botaoPlay = document.getElementById("botaoPlay");
+
+
+            function toggleMusica() {
+        if (musica.paused) {
+        musica.play();
+        botaoPlay.classList.add("pausando");
+        } else {
+        musica.pause();
+        botaoPlay.classList.remove("pausando");
+        }
+    }
+
+    musica.addEventListener("timeupdate", () => {
+        const porcentagem = (musica.currentTime / musica.duration) * 100;
+        progresso.style.width = porcentagem + "%";
+        bolinha.style.left = porcentagem + "%";
+    });
+
+    // Arrastar para buscar na música
+    barraContainer.addEventListener("click", (e) => {
+        const rect = barraContainer.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const porcentagem = x / rect.width;
+        musica.currentTime = porcentagem * musica.duration;
+    });
+</script>
+
+</body>
+</html>
