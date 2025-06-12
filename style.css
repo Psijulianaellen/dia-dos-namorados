@@ -1,0 +1,142 @@
+
+    *{
+        margin: 0;
+    }
+
+    body{
+        background-color: rgb(29, 29, 29);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .box-play{
+        background: #00ff00;
+        background: linear-gradient(180deg,rgba(0, 255, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
+        width: 20.83vw;
+        height: 65vh;
+        margin-top: 100px;
+        box-shadow: 0px 10px 50px black;
+        border-radius: 20px;
+    }
+
+    .img-box{
+        height: 45vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carrossel {
+        width: 14vw;
+        height: 26vh;
+        margin: auto;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+    }
+
+    .carrossel img {
+        display: none;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+
+    .carrossel img.visivel {
+        display: block;
+    }
+
+    .controle-play{
+        height: 20vh;
+    }
+
+    
+    .pause-play{
+        background-image: url(img/play.png);
+        background-color: rgb(255, 255, 255);
+        background-size: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 100%;
+        border: none;
+        height: 50px;
+        width: 50px;
+        cursor: pointer;
+    }
+
+    .pause-play.pausando {
+    background-image: url("img/pause.png"); /* muda para ícone de pause */
+}
+
+    .controle{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        flex-direction: column;
+        margin-bottom: 50px;
+    }
+
+    .btn{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 20px;
+    }
+
+    .pass-button{
+        height: 50px;
+        width: 50px;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        cursor: pointer;
+    }
+
+    .controle img{
+        height: 70%;
+        width: 70%;
+    }
+
+    .barra-container {
+        position: relative;
+        width: 300px;
+        height: 6px;
+        background: #ccc;
+        margin: 20px 0;
+        border-radius: 3px;
+    }
+
+    .progresso {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: white;
+        border-radius: 3px;
+    }
+
+    .bolinha {
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 14px;
+        height: 14px;
+        background: #ccc;
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    @media (max-width: 600px) {
+    .box-play {
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    border-radius: 0;
+    }
+
+    .carrossel{
+        width: 250px;
+    }
+}
