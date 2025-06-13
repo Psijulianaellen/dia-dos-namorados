@@ -5,7 +5,7 @@
 
     body{
         background: #db0202;
-background: linear-gradient(180deg,rgba(219, 2, 2, 1) 0%, rgba(125, 4, 4, 1) 100%);
+        background: linear-gradient(180deg,rgba(219, 2, 2, 1) 0%, rgba(125, 4, 4, 1) 100%);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -135,6 +135,8 @@ background: linear-gradient(180deg,rgba(219, 2, 2, 1) 0%, rgba(125, 4, 4, 1) 100
     
     body{
         background-color: #570c0c;
+        background-image: none;
+        height: 100%;
     }
 
     .box-play {
