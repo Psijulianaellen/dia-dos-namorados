@@ -4,17 +4,19 @@
     }
 
     body{
-        background-color: rgb(29, 29, 29);
+        background: #db0202;
+background: linear-gradient(180deg,rgba(219, 2, 2, 1) 0%, rgba(125, 4, 4, 1) 100%);
         display: flex;
         align-items: center;
         justify-content: center;
+        background-repeat: no-repeat;
+        height: 1000px;
     }
 
     .box-play{
-        background: #00ff00;
-        background: linear-gradient(180deg,rgba(0, 255, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
-        width: 20.83vw;
+        background: #570c0c;
         height: 65vh;
+        width: 18vw;
         margin-top: 100px;
         box-shadow: 0px 10px 50px black;
         border-radius: 20px;
@@ -29,12 +31,13 @@
 
     .carrossel {
         width: 14vw;
-        height: 26vh;
+        height: 30vh;
         margin: auto;
         position: relative;
         overflow: hidden;
         border: 1px solid #ccc;
         border-radius: 20px;
+                box-shadow: 0px 3px 10px black;
     }
 
     .carrossel img {
@@ -101,7 +104,7 @@
 
     .barra-container {
         position: relative;
-        width: 300px;
+        width: 15vw;
         height: 6px;
         background: #ccc;
         margin: 20px 0;
@@ -129,14 +132,25 @@
     }
 
     @media (max-width: 600px) {
+    
+    body{
+        background-color: #570c0c;
+    }
+
     .box-play {
     width: 100%;
     height: 100%;
-    margin-top: 50px;
+    margin-top: 70px;
     border-radius: 0;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: none;
     }
 
     .carrossel{
         width: 250px;
+    }
+
+    .barra-container{
+        width: 70vw;
     }
 }
